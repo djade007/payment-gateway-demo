@@ -1,6 +1,7 @@
 package com.checkout.payment.gateway.model;
 
 import com.checkout.payment.gateway.validation.FutureExpiryDate;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -46,11 +47,12 @@ public class PostPaymentRequest implements Serializable {
   @Pattern(regexp = "^[0-9]{3,4}$", message = "CVV must be 3 or 4 digits")
   private String cvv;
 
-  @JsonProperty("expiry_date")
+  @JsonIgnore
   public String getExpiryDate() {
     return String.format("%02d/%d", expiryMonth, expiryYear);
   }
 
+  @JsonIgnore
   public String getCardNumberLastFour() {
     return cardNumber != null && cardNumber.length() >= 4
         ? cardNumber.substring(cardNumber.length() - 4)
