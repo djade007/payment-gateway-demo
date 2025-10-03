@@ -2,7 +2,7 @@ package com.checkout.payment.gateway.service;
 
 import com.checkout.payment.gateway.acquirer.model.BankPaymentRequest;
 import com.checkout.payment.gateway.acquirer.model.BankPaymentResponse;
-import com.checkout.payment.gateway.acquirer.service.BankSimulatorClient;
+import com.checkout.payment.gateway.acquirer.service.AcquiringBankClient;
 import com.checkout.payment.gateway.enums.PaymentStatus;
 import com.checkout.payment.gateway.exception.EventProcessingException;
 import com.checkout.payment.gateway.model.PaymentResponse;
@@ -21,7 +21,7 @@ public class PaymentGatewayService {
   private static final Logger LOG = LoggerFactory.getLogger(PaymentGatewayService.class);
 
   private final PaymentsRepository paymentsRepository;
-  private final BankSimulatorClient bankSimulatorClient;
+  private final AcquiringBankClient acquiringBankClient;
 
   public PaymentResponse getPaymentById(UUID id) {
     LOG.debug("Requesting access to to payment with ID {}", id);
@@ -40,7 +40,7 @@ public class PaymentGatewayService {
             .cvv(paymentRequest.getCvv())
             .build();
 
-    BankPaymentResponse bankResponse = bankSimulatorClient.processPayment(bankRequest);
+    BankPaymentResponse bankResponse = acquiringBankClient.processPayment(bankRequest);
 
     PaymentResponse response =
         PaymentResponse.builder()

@@ -13,7 +13,7 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-public class BankSimulatorClient {
+public class BankSimulatorClient implements AcquiringBankClient {
 
   private static final Logger LOG = LoggerFactory.getLogger(BankSimulatorClient.class);
 
@@ -26,6 +26,7 @@ public class BankSimulatorClient {
     this.bankUrl = bankUrl;
   }
 
+  @Override
   public BankPaymentResponse processPayment(BankPaymentRequest request) {
     try {
       LOG.debug("Sending payment request to bank simulator: {}", request);
