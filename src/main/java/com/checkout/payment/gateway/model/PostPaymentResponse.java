@@ -3,16 +3,18 @@ package com.checkout.payment.gateway.model;
 import com.checkout.payment.gateway.enums.PaymentStatus;
 import java.util.UUID;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Value;
+import lombok.extern.jackson.Jacksonized;
 
-@Data
+@Value
 @Builder
+@Jacksonized
 public class PostPaymentResponse {
-  private UUID id;
-  private PaymentStatus status;
-  private int cardNumberLastFour;
-  private int expiryMonth;
-  private int expiryYear;
-  private String currency;
-  private int amount;
+  UUID id;
+  PaymentStatus status;
+  int cardNumberLastFour;
+  int expiryMonth;
+  int expiryYear;
+  String currency;
+  int amount;
 }
