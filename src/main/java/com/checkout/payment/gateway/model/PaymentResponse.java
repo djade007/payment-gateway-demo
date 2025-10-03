@@ -9,7 +9,7 @@ import lombok.extern.jackson.Jacksonized;
 @Value
 @Builder
 @Jacksonized
-public class GetPaymentResponse {
+public class PaymentResponse {
   UUID id;
   PaymentStatus status;
   int cardNumberLastFour;
