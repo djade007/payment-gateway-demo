@@ -17,9 +17,7 @@ import lombok.Data;
 public class PostPaymentRequest implements Serializable {
 
   @NotNull(message = "Card Number is required")
-  @Pattern(
-      regexp = "^[0-9]{14,19}$",
-      message = "Card Number must be between 14-19 digits")
+  @Pattern(regexp = "^[0-9]{14,19}$", message = "Card Number must be between 14-19 digits")
   @JsonProperty("card_number")
   private String cardNumber;
 
@@ -35,7 +33,9 @@ public class PostPaymentRequest implements Serializable {
 
   @NotNull(message = "Currency is required")
   @Size(min = 3, max = 3, message = "Currency must be 3 characters")
-  @Pattern(regexp = "^(GBP|EUR|USD)$", message = "Currency must be one of the supported types (GBP, EUR, USD)")
+  @Pattern(
+      regexp = "^(GBP|EUR|USD)$",
+      message = "Currency must be one of the supported types (GBP, EUR, USD)")
   private String currency;
 
   @NotNull(message = "Amount is required")

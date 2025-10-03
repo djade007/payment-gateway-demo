@@ -27,14 +27,15 @@ class PaymentGatewayControllerTest {
 
   @Test
   void whenPaymentWithIdExistThenCorrectPaymentIsReturned() throws Exception {
-    PostPaymentResponse payment = new PostPaymentResponse();
-    payment.setId(UUID.randomUUID());
-    payment.setAmount(10);
-    payment.setCurrency("USD");
-    payment.setStatus(PaymentStatus.AUTHORIZED);
-    payment.setExpiryMonth(12);
-    payment.setExpiryYear(2024);
-    payment.setCardNumberLastFour(4321);
+    PostPaymentResponse payment = PostPaymentResponse.builder()
+        .id(UUID.randomUUID())
+        .amount(10)
+        .currency("USD")
+        .status(PaymentStatus.AUTHORIZED)
+        .expiryMonth(12)
+        .expiryYear(2024)
+        .cardNumberLastFour(4321)
+        .build();
 
     paymentsRepository.add(payment);
 
