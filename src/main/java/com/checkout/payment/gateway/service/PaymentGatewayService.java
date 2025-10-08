@@ -47,7 +47,7 @@ public class PaymentGatewayService {
             .id(UUID.randomUUID())
             .status(
                 bankResponse.getAuthorized() ? PaymentStatus.AUTHORIZED : PaymentStatus.DECLINED)
-            .cardNumberLastFour(Integer.parseInt(paymentRequest.getCardNumberLastFour()))
+            .cardNumberLastFour(paymentRequest.getCardNumberLastFour())
             .expiryMonth(paymentRequest.getExpiryMonth())
             .expiryYear(paymentRequest.getExpiryYear())
             .currency(paymentRequest.getCurrency())

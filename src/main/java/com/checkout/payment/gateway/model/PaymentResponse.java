@@ -12,7 +12,7 @@ import lombok.extern.jackson.Jacksonized;
 public class PaymentResponse {
   UUID id;
   PaymentStatus status;
-  int cardNumberLastFour;
+  String cardNumberLastFour;
   int expiryMonth;
   int expiryYear;
   String currency;

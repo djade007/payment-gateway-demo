@@ -61,7 +61,7 @@ class PaymentGatewayControllerTest {
               .status(PaymentStatus.AUTHORIZED)
               .expiryMonth(12)
               .expiryYear(2024)
-              .cardNumberLastFour(4321)
+              .cardNumberLastFour("4321")
               .build();
 
       paymentsRepository.add(payment);
